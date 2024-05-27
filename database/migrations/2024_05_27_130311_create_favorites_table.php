@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(config('favorite.favorites_table'), function (Blueprint $table) {
+        Schema::create(config('favorite.favorites_table', 'favorites'), function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger(config('favorite.user_foreign_key'))->index()->comment('user_id');
+            $table->unsignedBigInteger(config('favorite.user_foreign_key', 'user_id'))->index()->comment('user_id');
             $table->morphs('favoriteable');
             $table->timestamps();
         });
